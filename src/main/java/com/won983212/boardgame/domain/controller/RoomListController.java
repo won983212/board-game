@@ -1,13 +1,16 @@
 package com.won983212.boardgame.domain.controller;
 
+import com.won983212.boardgame.domain.game.model.GameType;
 import com.won983212.boardgame.domain.player.model.Player;
 import com.won983212.boardgame.domain.player.service.PlayerService;
+import com.won983212.boardgame.domain.room.dto.CreateRoomRequest;
 import com.won983212.boardgame.domain.room.dto.RoomResponse;
 import com.won983212.boardgame.domain.room.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,11 +36,12 @@ public class RoomListController {
         // TODO test data
         model.addAttribute("playerName", "이현");
         model.addAttribute("rooms", roomViewModels);
+        model.addAttribute("createRoomRequest", new CreateRoomRequest("", GameType.OMOK));
         return "room/list";
     }
 
     @PostMapping
-    public void createRoom() {
-
+    public String createRoom(@ModelAttribute CreateRoomRequest createRoomRequest) {
+        return "redirect:/room";
     }
 }

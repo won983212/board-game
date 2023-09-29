@@ -7,8 +7,40 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+
+<div class="modal fade" id="createRoomModal" tabindex="-1" aria-labelledby="createRoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" th:action="@{/room}"
+              th:object="${createRoomRequest}" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createRoomModalLabel">방 만들기</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="roomNameInput" class="form-label">방 이름</label>
+                    <input class="form-control" id="roomNameInput" th:field="*{roomName}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="gameTypeInput" class="form-label">게임</label>
+                    <select class="form-select" id="gameTypeInput" th:field="*{gameType}">
+                        <option value="OMOK">오목</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">생성</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <h1>안녕하세요, <a href="#" th:text="${playerName}">??</a>님!</h1>
-<a href="#" onclick="createRoom()">방 만들기</a>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRoomModal">
+    방 만들기
+</button>
+
 <ul>
     <li th:each="room: ${rooms}">
         <a href="#" th:text="${room.getName()}"></a>
@@ -16,6 +48,7 @@
         <span th:text="|, ${room.getPlayers()}/${room.getMaxPlayers()}|"></span>
     </li>
 </ul>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
