@@ -1,3 +1,3 @@
-function f() {
+function createRoom() {
     alert("Hello");
 }
