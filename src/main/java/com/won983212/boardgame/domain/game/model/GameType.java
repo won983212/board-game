@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum GameInfo {
+public enum GameType {
 	OMOK("오목", 2);
 
 	private final String label;
