@@ -12,13 +12,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class RoomService {
-	private final RoomRepository repository;
+    private final RoomRepository repository;
 
-	public Collection<Room> getRooms(){
-		return repository.findAllRooms();
-	}
-
-	public void createRoom(){
-
-	}
+    public Collection<Room> getRooms() {
+        return repository.findAllRooms();
+    }
 }
