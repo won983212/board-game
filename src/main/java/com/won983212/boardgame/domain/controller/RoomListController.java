@@ -1,6 +1,6 @@
 package com.won983212.boardgame.domain.controller;
 
-import com.won983212.boardgame.domain.game.model.GameType;
+import com.won983212.boardgame.domain.game.enums.GameType;
 import com.won983212.boardgame.domain.player.model.Player;
 import com.won983212.boardgame.domain.player.service.PlayerService;
 import com.won983212.boardgame.domain.room.dto.CreateRoomRequest;

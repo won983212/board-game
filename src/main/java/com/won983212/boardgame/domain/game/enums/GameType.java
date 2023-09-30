@@ -1,4 +1,4 @@
-package com.won983212.boardgame.domain.game.model;
+package com.won983212.boardgame.domain.game.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

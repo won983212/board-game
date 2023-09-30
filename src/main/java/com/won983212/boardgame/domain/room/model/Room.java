@@ -1,6 +1,6 @@
 package com.won983212.boardgame.domain.room.model;
 
-import com.won983212.boardgame.domain.game.model.GameType;
+import com.won983212.boardgame.domain.game.enums.GameType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
