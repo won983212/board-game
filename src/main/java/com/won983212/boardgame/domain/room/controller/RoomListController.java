@@ -6,6 +6,7 @@ import com.won983212.boardgame.domain.player.service.PlayerService;
 import com.won983212.boardgame.domain.room.dto.CreateRoomRequest;
 import com.won983212.boardgame.domain.room.dto.RoomResponse;
 import com.won983212.boardgame.domain.room.service.RoomService;
+import com.won983212.boardgame.global.security.AppAuthentication;
 import com.won983212.boardgame.global.security.role.UserAuth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,19 +28,22 @@ public class RoomListController {
 
     @GetMapping
     @UserAuth
-    public String index(Model model) {
+    public String index(AppAuthentication auth, Model model) {
         List<RoomResponse> roomViewModels = roomService.getRooms().stream()
-                .map((room) -> RoomResponse.from(room,
-                        playerService.findById(room.getMasterPlayerId())
-                                .map(Player::getName)
-                                .orElse("Unknown")))
+                .map((room) -> RoomResponse.from(room, getUsername(room.getMasterPlayerId())))
                 .toList();
 
         // TODO test data
-        model.addAttribute("playerName", "이현");
+        model.addAttribute("playerName", getUsername(auth.getUserId()));
         model.addAttribute("rooms", roomViewModels);
         model.addAttribute("createRoomRequest", new CreateRoomRequest("", GameType.OMOK));
         return "room/list";
+    }
+
+    private String getUsername(Long playerId) {
+        return playerService.findById(playerId)
+                .map(Player::getName)
+                .orElse("Unknown");
     }
 
     @PostMapping
