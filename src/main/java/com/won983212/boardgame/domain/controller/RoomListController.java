@@ -6,6 +6,7 @@ import com.won983212.boardgame.domain.player.service.PlayerService;
 import com.won983212.boardgame.domain.room.dto.CreateRoomRequest;
 import com.won983212.boardgame.domain.room.dto.RoomResponse;
 import com.won983212.boardgame.domain.room.service.RoomService;
+import com.won983212.boardgame.global.security.role.UserAuth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,7 @@ public class RoomListController {
     private final PlayerService playerService;
 
     @GetMapping
+    @UserAuth
     public String index(Model model) {
         List<RoomResponse> roomViewModels = roomService.getRooms().stream()
                 .map((room) -> RoomResponse.from(room,
@@ -41,6 +43,7 @@ public class RoomListController {
     }
 
     @PostMapping
+    @UserAuth
     public String createRoom(@ModelAttribute CreateRoomRequest createRoomRequest) {
         return "redirect:/room";
     }
