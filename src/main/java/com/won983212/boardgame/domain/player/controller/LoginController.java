@@ -1,4 +1,4 @@
-package com.won983212.boardgame.domain.controller;
+package com.won983212.boardgame.domain.player.controller;
 
 import com.won983212.boardgame.domain.game.enums.GameType;
 import com.won983212.boardgame.domain.player.dto.LoginRequest;
