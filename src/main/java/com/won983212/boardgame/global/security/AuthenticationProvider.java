@@ -56,7 +56,7 @@ public class AuthenticationProvider {
         return new AppAuthentication(userId, userRole);
     }
 
-    private AuthenticationToken createToken(String userId, UserRole role) {
+    public AuthenticationToken createToken(Long userId, UserRole role) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime validity = now.plus(expires);
 
