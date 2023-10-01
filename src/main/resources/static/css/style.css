@@ -1,0 +1,11 @@
+.flex-box {
+    display: flex;
+}
+
+form.login-form {
+    margin: auto;
+}
+
+#nameInput {
+    min-width: 400px;
+}
