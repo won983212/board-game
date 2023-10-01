@@ -7,7 +7,6 @@ import lombok.ToString;
 
 @Getter
 @RequiredArgsConstructor
-@ToString
 public class CreateRoomRequest {
     private final String roomName;
     private final GameType gameType;
