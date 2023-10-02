@@ -1,7 +1,7 @@
-package com.won983212.boardgame.domain.player.controller;
+package com.won983212.boardgame.domain.auth.controller;
 
-import com.won983212.boardgame.domain.player.dto.LoginRequest;
-import com.won983212.boardgame.domain.player.service.PlayerService;
+import com.won983212.boardgame.domain.auth.dto.LoginRequest;
+import com.won983212.boardgame.domain.auth.service.LoginService;
 import com.won983212.boardgame.global.security.AuthenticationProvider;
 import com.won983212.boardgame.global.security.AuthenticationToken;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class LoginController {
 
-    private final PlayerService playerService;
+    private final LoginService loginService;
     private final AuthenticationProvider authenticationProvider;
 
     @GetMapping
@@ -29,7 +29,7 @@ public class LoginController {
 
     @PostMapping
     public void doLogin(HttpServletResponse response, @ModelAttribute LoginRequest loginRequest) {
-        AuthenticationToken token = playerService.login(loginRequest.getUsername(), loginRequest.getPassword());
+        AuthenticationToken token = loginService.login(loginRequest.getUsername(), loginRequest.getPassword());
         if (token != null) {
             authenticationProvider.saveAuthenticationCookie(response, token);
         }

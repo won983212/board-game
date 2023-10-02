@@ -1,4 +1,4 @@
-package com.won983212.boardgame.domain.player.dto;
+package com.won983212.boardgame.domain.auth.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.won983212.boardgame.domain.player.exception;
+package com.won983212.boardgame.domain.auth.exception;
 
 public class WrongPasswordException extends RuntimeException {
 }
