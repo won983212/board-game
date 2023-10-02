@@ -36,7 +36,7 @@ public class RoomListController {
         model.addAttribute("playerName", getUsername(auth.getUserId()));
         model.addAttribute("rooms", roomViewModels);
         model.addAttribute("createRoomRequest", new CreateRoomRequest("", GameType.OMOK));
-        return "room/list";
+        return "roomList";
     }
 
     private String getUsername(Long playerId) {
