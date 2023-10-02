@@ -33,7 +33,6 @@ public class RoomListController {
                 .map((room) -> RoomResponse.from(room, getUsername(room.getMasterPlayerId())))
                 .toList();
 
-        // TODO test data
         model.addAttribute("playerName", getUsername(auth.getUserId()));
         model.addAttribute("rooms", roomViewModels);
         model.addAttribute("createRoomRequest", new CreateRoomRequest("", GameType.OMOK));

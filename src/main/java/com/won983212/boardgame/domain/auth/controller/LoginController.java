@@ -28,10 +28,11 @@ public class LoginController {
     }
 
     @PostMapping
-    public void doLogin(HttpServletResponse response, @ModelAttribute LoginRequest loginRequest) {
+    public String doLogin(HttpServletResponse response, @ModelAttribute LoginRequest loginRequest) {
         AuthenticationToken token = loginService.login(loginRequest.getUsername(), loginRequest.getPassword());
         if (token != null) {
             authenticationProvider.saveAuthenticationCookie(response, token);
         }
+        return "redirect:/room";
     }
 }

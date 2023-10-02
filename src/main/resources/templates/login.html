@@ -20,7 +20,7 @@
     </div>
     <div class="mb-3">
         <label for="passwordInput" class="form-label">비밀번호</label>
-        <input class="form-control" id="passwordInput" th:field="*{password}" aria-describedby="passwordInputHelp" required>
+        <input class="form-control" type="password" id="passwordInput" th:field="*{password}" aria-describedby="passwordInputHelp" required>
         <div id="passwordInputHelp" class="form-text">회원이 아닌 경우에는 입력한 비밀번호로 자동 회원가입됩니다.</div>
     </div>
     <button type="submit" class="btn btn-primary btn-right">입장하기</button>

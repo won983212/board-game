@@ -5,7 +5,7 @@
 <mapper namespace="com.won983212.boardgame.domain.player.repository.mapper.PlayerMapper">
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into players (id, name, password, user_role)
-        values (#{id}, #{name}, #{password}, #{user_role})
+        values (#{id}, #{name}, #{password}, #{userRole})
     </insert>
 
     <update id="rename">
