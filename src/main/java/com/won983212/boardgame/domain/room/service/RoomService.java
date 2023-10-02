@@ -1,13 +1,11 @@
 package com.won983212.boardgame.domain.room.service;
 
-import java.util.Collection;
-
-import org.springframework.stereotype.Service;
-
 import com.won983212.boardgame.domain.room.model.Room;
 import com.won983212.boardgame.domain.room.repository.RoomRepository;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 @Service
 @RequiredArgsConstructor

@@ -1,13 +1,12 @@
 package com.won983212.boardgame.domain.room.repository;
 
+import com.won983212.boardgame.domain.game.enums.GameType;
+import com.won983212.boardgame.domain.room.model.Room;
+import org.springframework.stereotype.Repository;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.won983212.boardgame.domain.game.enums.GameType;
-import org.springframework.stereotype.Repository;
-
-import com.won983212.boardgame.domain.room.model.Room;
 
 @Repository
 public class RoomRepository {

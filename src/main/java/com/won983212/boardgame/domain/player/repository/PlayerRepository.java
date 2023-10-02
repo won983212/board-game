@@ -1,10 +1,9 @@
 package com.won983212.boardgame.domain.player.repository;
 
-import java.util.Optional;
-
+import com.won983212.boardgame.domain.player.model.Player;
 import org.springframework.stereotype.Repository;
 
-import com.won983212.boardgame.domain.player.model.Player;
+import java.util.Optional;
 
 @Repository
 public class PlayerRepository {
