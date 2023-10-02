@@ -21,16 +21,15 @@ public class LoginService {
 
     public AuthenticationToken login(String username, String password) {
         Optional<Player> p = repository.findByUsername(username);
-
         Player player;
-        String encodedPwd = passwordEncoder.encode(password);
 
         if (p.isPresent()) {
             player = p.get();
-            if (!player.getPassword().equals(encodedPwd)) {
+            if (!passwordEncoder.matches(password, player.getPassword())) {
                 throw new WrongPasswordException();
             }
         } else {
+            String encodedPwd = passwordEncoder.encode(password);
             player = Player.of(username, encodedPwd);
             player = repository.save(player);
         }
