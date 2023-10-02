@@ -1,6 +1,7 @@
 package com.won983212.boardgame.domain.auth.controller;
 
 import com.won983212.boardgame.domain.auth.dto.LoginRequest;
+import com.won983212.boardgame.domain.auth.exception.WrongPasswordException;
 import com.won983212.boardgame.domain.auth.service.LoginService;
 import com.won983212.boardgame.global.security.AuthenticationProvider;
 import com.won983212.boardgame.global.security.AuthenticationToken;
@@ -29,9 +30,13 @@ public class LoginController {
 
     @PostMapping
     public String doLogin(HttpServletResponse response, @ModelAttribute LoginRequest loginRequest) {
-        AuthenticationToken token = loginService.login(loginRequest.getUsername(), loginRequest.getPassword());
-        if (token != null) {
-            authenticationProvider.saveAuthenticationCookie(response, token);
+        try {
+            AuthenticationToken token = loginService.login(loginRequest.getUsername(), loginRequest.getPassword());
+            if (token != null) {
+                authenticationProvider.saveAuthenticationCookie(response, token);
+            }
+        } catch (WrongPasswordException e) {
+            return "redirect:/login?error=1";
         }
         return "redirect:/room";
     }
