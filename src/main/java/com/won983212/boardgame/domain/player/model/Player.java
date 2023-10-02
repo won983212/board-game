@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class Player {
-    private final Long id;
+    private final long id;
     private final String name;
     private final String password;
     private final UserRole userRole;
