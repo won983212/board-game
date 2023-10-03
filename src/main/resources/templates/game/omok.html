@@ -5,12 +5,11 @@
       layout:fragment="Content">
 <head>
     <title th:text="|오목 ${roomId}번 방|"></title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script th:src="@{/js/omok.js}"></script>
 </head>
 
 <body class="flex-box">
-<div class="center-container">
-    <h1 th:text="${roomId}"></h1>
-    <p>오목</p>
-</div>
+
 </body>
 </html>
