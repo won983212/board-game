@@ -2,10 +2,10 @@
     display: flex;
 }
 
-form.login-form {
-    margin: auto;
-}
-
 #nameInput {
     min-width: 400px;
+}
+
+.center-container {
+    margin: auto;
 }

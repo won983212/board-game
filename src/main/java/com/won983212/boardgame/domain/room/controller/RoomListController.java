@@ -5,6 +5,7 @@ import com.won983212.boardgame.domain.player.model.Player;
 import com.won983212.boardgame.domain.player.service.PlayerService;
 import com.won983212.boardgame.domain.room.dto.CreateRoomRequest;
 import com.won983212.boardgame.domain.room.dto.RoomResponse;
+import com.won983212.boardgame.domain.room.model.Room;
 import com.won983212.boardgame.domain.room.service.RoomService;
 import com.won983212.boardgame.global.security.AppAuthentication;
 import com.won983212.boardgame.global.security.role.UserAuth;
@@ -47,7 +48,8 @@ public class RoomListController {
 
     @PostMapping
     @UserAuth
-    public String createRoom(@ModelAttribute CreateRoomRequest createRoomRequest) {
-        return "redirect:/room";
+    public String createRoom(AppAuthentication auth, @ModelAttribute CreateRoomRequest dto) {
+        Room room = roomService.createRoom(dto.getRoomName(), dto.getGameType(), auth.getUserId());
+        return "redirect:/game/" + room.getRoomId();
     }
 }

@@ -10,7 +10,7 @@
 
 <div class="modal fade" id="createRoomModal" tabindex="-1" aria-labelledby="createRoomModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <form class="modal-content" th:action="@{/templates/room}"
+        <form class="modal-content" th:action="@{/room}"
               th:object="${createRoomRequest}" method="post">
             <div class="modal-header">
                 <h5 class="modal-title" id="createRoomModalLabel">방 만들기</h5>
@@ -43,7 +43,7 @@
 
 <ul>
     <li th:each="room: ${rooms}">
-        <a href="#" th:text="${room.getName()}"></a>
+        <a th:href="|/game/${room.getRoomId()}|" th:text="${room.getName()}"></a>
         <span th:text="|, ${room.getGameName()}, ${room.getMasterPlayerName()}|"></span>
         <span th:text="|, ${room.getPlayers()}/${room.getMaxPlayers()}|"></span>
     </li>

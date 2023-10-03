@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class RoomResponse {
 
+    private final Long roomId;
     private final String name;
     private final String gameName;
     private final String masterPlayerName;
@@ -16,7 +17,8 @@ public class RoomResponse {
     private final int maxPlayers;
 
     public static RoomResponse from(Room room, String masterPlayerName) {
-        return new RoomResponse(room.getName(),
+        return new RoomResponse(room.getRoomId(),
+                room.getName(),
                 room.getGameType().getLabel(),
                 masterPlayerName,
                 room.getPlayers(),
