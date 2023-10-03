@@ -7,16 +7,13 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class RoomRepository {
     // TODO redis로 교체: 동시성 이슈, 데이터 안정성, 확장 가능성
-    // TODO Test data
-    private final Map<Long, Room> rooms = new HashMap<>(Map.of(
-            1L, Room.of("초보만", GameType.OMOK, 1L).withId(1L),
-            2L, Room.of("안녕하세요", GameType.OMOK, 2L).withId(2L)
-    ));
-    private static long nextRoomId = 3;
+    private final Map<Long, Room> rooms = new HashMap<>();
+    private static long nextRoomId = 1;
 
     public Collection<Room> findAllRooms() {
         return rooms.values();
@@ -31,5 +28,9 @@ public class RoomRepository {
 
     public void delete(Long roomId) {
         rooms.remove(roomId);
+    }
+
+    public Optional<Room> findById(Long id) {
+        return Optional.ofNullable(rooms.get(id));
     }
 }

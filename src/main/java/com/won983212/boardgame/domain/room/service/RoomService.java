@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,10 @@ public class RoomService {
 
     public Collection<Room> getRooms() {
         return repository.findAllRooms();
+    }
+
+    public Optional<Room> findById(Long id) {
+        return repository.findById(id);
     }
 
     public Room createRoom(String roomName, GameType type, Long masterId) {

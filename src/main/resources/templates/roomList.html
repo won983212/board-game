@@ -23,8 +23,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="gameTypeInput" class="form-label">게임</label>
-                    <select class="form-select" id="gameTypeInput" th:field="*{gameType}">
-                        <option value="OMOK">오목</option>
+                    <select class="form-select" id="gameTypeInput" th:field="*{gameType}"
+                            th:each="gameType: ${gameTypes}">
+                        <option th:value="${gameType.name()}" th:text="${gameType.getLabel()}"></option>
                     </select>
                 </div>
             </div>
