@@ -1,0 +1,13 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="common/headConfig :: HeadConfigFragment">
+    <title>title</title>
+</head>
+
+<body>
+<th:block layout:fragment="Content"></th:block>
+<footer th:replace="common/footer :: FooterFragment"></footer>
+</body>
+</html>
