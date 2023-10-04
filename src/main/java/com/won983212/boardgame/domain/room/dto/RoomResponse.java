@@ -16,12 +16,12 @@ public class RoomResponse {
     private final int players;
     private final int maxPlayers;
 
-    public static RoomResponse from(Room room, String masterPlayerName) {
+    public static RoomResponse from(Room room, String masterPlayerName, int players) {
         return new RoomResponse(room.getRoomId(),
                 room.getName(),
                 room.getGameType().getLabel(),
                 masterPlayerName,
-                room.getPlayers(),
+                players,
                 room.getGameType().getMaxPlayers());
     }
 }

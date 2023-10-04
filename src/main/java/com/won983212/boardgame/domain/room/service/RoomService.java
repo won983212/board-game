@@ -26,4 +26,8 @@ public class RoomService {
         Room room = Room.of(roomName, type, masterId);
         return repository.save(room);
     }
+
+    public void removeRoom(Long roomId) {
+        repository.delete(roomId);
+    }
 }

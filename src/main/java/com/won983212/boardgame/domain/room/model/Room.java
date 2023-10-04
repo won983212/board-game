@@ -12,7 +12,6 @@ public class Room {
     private final String name;
     private final GameType gameType;
     private final Long masterPlayerId;
-    private int players = 1;
 
     public static Room of(String name, GameType type, Long masterPlayerId) {
         return new Room(null, name, type, masterPlayerId);
@@ -20,9 +19,5 @@ public class Room {
 
     public Room withId(Long id) {
         return new Room(id, name, gameType, masterPlayerId);
-    }
-
-    public void increasePlayers() {
-        players++;
     }
 }

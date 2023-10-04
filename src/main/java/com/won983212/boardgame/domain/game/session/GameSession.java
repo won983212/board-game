@@ -19,4 +19,8 @@ public class GameSession {
     public boolean isEmptyPlayer() {
         return playerSessions.isEmpty();
     }
+
+    public int countPlayer() {
+        return playerSessions.size();
+    }
 }
