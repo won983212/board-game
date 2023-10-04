@@ -22,7 +22,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         RawMessage rawMessage = mapper.readValue(message.getPayload(), RawMessage.class);
-        packetManager.handlePacket(rawMessage.getType(), rawMessage.getData());
+        packetManager.handlePacket(session, rawMessage.getType(), rawMessage.getData());
     }
 
     @Override

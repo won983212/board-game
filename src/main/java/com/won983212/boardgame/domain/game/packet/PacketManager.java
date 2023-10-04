@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.socket.WebSocketSession;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,11 +20,11 @@ public class PacketManager {
         handlers.put(key, info);
     }
 
-    public <T extends Packet> void handlePacket(String key, String payload) throws JsonProcessingException {
+    public <T extends Packet> void handlePacket(WebSocketSession session, String key, String payload) throws JsonProcessingException {
         PacketHandlerInfo<T> info = (PacketHandlerInfo<T>) handlers.get(key);
         if (info != null) {
             Packet packet = mapper.readValue(payload, info.packetType);
-            info.handler.handle((T) packet);
+            info.handler.handle(session, (T) packet);
         }
     }
 
