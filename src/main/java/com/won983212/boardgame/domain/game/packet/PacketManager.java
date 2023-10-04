@@ -20,7 +20,7 @@ public class PacketManager {
         handlers.put(key, info);
     }
 
-    public <T extends Packet> void handlePacket(WebSocketSession session, String key, String payload) throws JsonProcessingException {
+    public <T extends Packet> void handlePacket(WebSocketSession session, String key, String payload) throws Exception {
         PacketHandlerInfo<T> info = (PacketHandlerInfo<T>) handlers.get(key);
         if (info != null) {
             Packet packet = mapper.readValue(payload, info.packetType);

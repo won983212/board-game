@@ -4,5 +4,10 @@ public enum SessionMetadataType {
     /**
      * Long type
      */
-    ROOM_ID
+    ROOM_ID,
+
+    /**
+     * Player type
+     */
+    PLAYER_INFO
 }
