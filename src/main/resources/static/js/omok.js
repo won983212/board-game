@@ -2,7 +2,7 @@ var sock = new SockJS('http://localhost:8080/ws/game');
 
 sock.onopen = function () {
     console.log('Connected!')
-    send('omok-joinRoom', {
+    send('joinRoom', {
         roomId: 1,
         auth: 'hello auth'
     });

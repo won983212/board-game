@@ -13,7 +13,5 @@ public class OmokConfig implements GameConfigurer {
 
     @Override
     public void registerPackets(PacketRegistry registry) {
-        registry.prefix("omok-")
-                .packet("joinRoom", HandshakePacket.class, messageHandler::handleHandshake);
     }
 }
