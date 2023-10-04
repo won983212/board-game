@@ -1,0 +1,11 @@
+.flex-box {
+    display: flex;
+}
+
+#nameInput {
+    min-width: 400px;
+}
+
+.center-container {
+    margin: auto;
+}

@@ -1,0 +1,33 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout}"
+      layout:fragment="Content">
+
+<head>
+    <title>로그인</title>
+</head>
+
+<body class="flex-box">
+<form class="center-container" th:action="@{/login}"
+      th:object="${loginRequest}" method="post">
+    <div class="mb-3">
+        <h2 class="text-center">보드게임</h2>
+    </div>
+    <div class="mb-3">
+        <label for="nameInput" class="form-label">이름</label>
+        <input class="form-control" id="nameInput" th:field="*{username}" required>
+    </div>
+    <div class="mb-3">
+        <label for="passwordInput" class="form-label">비밀번호</label>
+        <input class="form-control" type="password" id="passwordInput" th:field="*{password}"
+               aria-describedby="passwordInputHelp" required>
+        <div id="passwordInputHelp" class="form-text">회원이 아닌 경우에는 입력한 비밀번호로 자동 회원가입됩니다.</div>
+    </div>
+    <div class="mb-3" th:if="${param.error != null && param.error[0] == '1'}">
+        <div class="form-text text-danger">비밀번호가 틀렸습니다.</div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-right">입장하기</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout}"
+      layout:fragment="Content">
+<head>
+    <title>방 목록</title>
+    <script type="text/javascript" th:src="@{/js/list.js}"></script>
+</head>
+
+<body>
+<div class="modal fade" id="createRoomModal" tabindex="-1" aria-labelledby="createRoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" th:action="@{/room}"
+              th:object="${createRoomRequest}" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createRoomModalLabel">방 만들기</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="roomNameInput" class="form-label">방 이름</label>
+                    <input class="form-control" id="roomNameInput" th:field="*{roomName}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="gameTypeInput" class="form-label">게임</label>
+                    <select class="form-select" id="gameTypeInput" th:field="*{gameType}"
+                            th:each="gameType: ${gameTypes}">
+                        <option th:value="${gameType.name()}" th:text="${gameType.getLabel()}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">생성</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h1>안녕하세요, <a href="#" th:text="${playerName}">??</a>님!</h1>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRoomModal">
+    방 만들기
+</button>
+
+<ul>
+    <li th:each="room: ${rooms}">
+        <a th:href="|/game/${room.getRoomId()}|" th:text="${room.getName()}"></a>
+        <span th:text="|, ${room.getGameName()}, ${room.getMasterPlayerName()}|"></span>
+        <span th:text="|, ${room.getPlayers()}/${room.getMaxPlayers()}|"></span>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,14 @@
+#gamePanel {
+    width: 500px;
+    height: 500px;
+}
+
+.game-label {
+    width: 500px;
+}
+
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: clip;
+}

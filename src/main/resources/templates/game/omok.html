@@ -1,0 +1,44 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout}">
+
+<head layout:fragment="Head">
+    <title th:text="|오목 ${roomId}번 방|"></title>
+    <link th:href="@{/css/omok.css}" rel="stylesheet">
+</head>
+
+<th:block layout:fragment="AfterBody">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script th:src="@{/js/omok.js}"></script>
+</th:block>
+
+
+<body class="flex-box" layout:fragment="Content">
+
+<div id="gameFinishModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">게임 끝</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><b>승리</b>하셨습니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="center-container">
+    <div class="mb-3 game-label">
+        <p class="display-6 text-center overflow-ellipsis"><b>${playerBlack}</b> vs <b>${playerWhite}</b></p>
+    </div>
+    <canvas id="gamePanel" width="500" height="500"></canvas>
+    <p class="text-center mt-3">상대의 차례입니다...</p>
+</div>
+</body>
+</html>

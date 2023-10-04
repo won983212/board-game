@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.won983212.boardgame.domain.player.repository.mapper.PlayerMapper">
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into players (id, name, password, user_role)
+        values (#{id}, #{name}, #{password}, #{userRole})
+    </insert>
+
+    <update id="rename">
+        update players
+        set name = #{newName}
+        where id = #{playerId}
+    </update>
+
+    <select id="findById" resultType="com.won983212.boardgame.domain.player.model.Player">
+        select id, name, password, user_role
+        from players
+        where id = #{playerId}
+    </select>
+
+    <select id="findByUsername" resultType="com.won983212.boardgame.domain.player.model.Player">
+        select id, name, password, user_role
+        from players
+        where name = #{username}
+    </select>
+</mapper>
