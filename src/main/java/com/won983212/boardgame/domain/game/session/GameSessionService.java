@@ -1,11 +1,13 @@
 package com.won983212.boardgame.domain.game.session;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Slf4j
 @Service
 public class GameSessionService {
     private final Map<Long, GameSession> sessions = new ConcurrentHashMap<>();
@@ -23,6 +25,11 @@ public class GameSessionService {
 
     public void leavePlayer(WebSocketSession session) {
         Long roomId = getMetadata(session, SessionMetadataType.ROOM_ID);
+        if (roomId == null) {
+            log.warn("ROOM ID가 등록되지 않은 session이 있습니다: " + session.getId());
+            return;
+        }
+
         GameSession gameSession = this.sessions.get(roomId);
         if (gameSession != null) {
             gameSession.removePlayerSession(session);
