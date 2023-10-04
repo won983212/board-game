@@ -17,6 +17,8 @@ public class GameController {
 
     private final RoomService roomService;
 
+    // TODO 정원이 꽉 차면 못들어오게 해야한다.
+    // TODO 동시에 정원이 차면 게임을 시작하도록 한다.
     @GetMapping("/{id}")
     public String game(@PathVariable("id") Long id, Model model) {
         Room room = roomService.findById(id).orElseThrow(NotFoundRoomException::new);

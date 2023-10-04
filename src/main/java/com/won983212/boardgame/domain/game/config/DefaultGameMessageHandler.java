@@ -31,6 +31,7 @@ public class DefaultGameMessageHandler {
                     .orElseThrow(() -> new NotFoundPlayerException("Handshake에서 찾을 수 없는 playerId를 보냈습니다: " + auth.getUserId()));
             gameSessionService.joinPlayer(packet.getRoomId(), player, session);
         } catch (Throwable t) {
+            // TODO master가 접속하지 못하면 room을 삭제해야 한다.
             session.close();
         }
     }
