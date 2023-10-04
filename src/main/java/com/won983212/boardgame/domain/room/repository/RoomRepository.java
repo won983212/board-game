@@ -1,6 +1,5 @@
 package com.won983212.boardgame.domain.room.repository;
 
-import com.won983212.boardgame.domain.game.enums.GameType;
 import com.won983212.boardgame.domain.room.model.Room;
 import org.springframework.stereotype.Repository;
 

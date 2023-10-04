@@ -3,7 +3,6 @@ package com.won983212.boardgame.domain.game.config;
 import com.won983212.boardgame.domain.game.exception.NotFoundPlayerException;
 import com.won983212.boardgame.domain.game.omok.HandshakePacket;
 import com.won983212.boardgame.domain.game.session.GameSessionService;
-import com.won983212.boardgame.domain.game.session.SessionMetadataType;
 import com.won983212.boardgame.domain.player.model.Player;
 import com.won983212.boardgame.domain.player.service.PlayerService;
 import com.won983212.boardgame.global.security.AppAuthentication;

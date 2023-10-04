@@ -1,7 +1,6 @@
 package com.won983212.boardgame.domain.player.model;
 
 import com.won983212.boardgame.global.security.role.UserRole;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
