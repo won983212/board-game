@@ -13,6 +13,7 @@
     <script th:src="@{/js/omok.js}"></script>
 </th:block>
 
+
 <body class="flex-box" layout:fragment="Content">
 
 <div id="gameFinishModal" class="modal" tabindex="-1">
@@ -33,7 +34,9 @@
 </div>
 
 <div class="center-container">
-    <p class="display-6 text-center mb-3"><b>admin</b> vs <b>admin</b></p>
+    <div class="mb-3 game-label">
+        <p class="display-6 text-center overflow-ellipsis"><b>${playerBlack}</b> vs <b>${playerWhite}</b></p>
+    </div>
     <canvas id="gamePanel" width="500" height="500"></canvas>
     <p class="text-center mt-3">상대의 차례입니다...</p>
 </div>
