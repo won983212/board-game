@@ -1,7 +1,7 @@
 package com.won983212.boardgame.domain.game.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.won983212.boardgame.domain.game.service.GameSessionService;
+import com.won983212.boardgame.domain.game.session.GameSessionService;
 import com.won983212.boardgame.domain.room.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -29,6 +29,6 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        //gameSessionService.removeSession(session);
+        gameSessionService.leavePlayer(session);
     }
 }
