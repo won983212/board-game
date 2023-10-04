@@ -14,13 +14,13 @@ public class PacketManager {
     private final Map<String, PacketHandlerInfo<? extends Packet>> handlers = new ConcurrentHashMap<>();
     private final ObjectMapper mapper;
 
-    public <T extends Packet> void registerPacket(String url, Class<T> packetType, PacketHandler<T> handler) {
+    public <T extends Packet> void registerPacket(String key, Class<T> packetType, PacketHandler<T> handler) {
         PacketHandlerInfo<T> info = new PacketHandlerInfo<>(packetType, handler);
-        handlers.put(url, info);
+        handlers.put(key, info);
     }
 
-    public <T extends Packet> void handlePacket(String url, String payload) throws JsonProcessingException {
-        PacketHandlerInfo<T> info = (PacketHandlerInfo<T>) handlers.get(url);
+    public <T extends Packet> void handlePacket(String key, String payload) throws JsonProcessingException {
+        PacketHandlerInfo<T> info = (PacketHandlerInfo<T>) handlers.get(key);
         if (info != null) {
             Packet packet = mapper.readValue(payload, info.packetType);
             info.handler.handle((T) packet);
