@@ -1,15 +1,19 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{common/layout}"
-      layout:fragment="Content">
-<head>
+      layout:decorate="~{common/layout}">
+
+<head layout:fragment="Head">
     <title th:text="|오목 ${roomId}번 방|"></title>
-    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-    <script th:src="@{/js/omok.js}"></script>
+    <link th:href="@{/css/omok.css}" rel="stylesheet">
 </head>
 
-<body class="flex-box">
-<canvas id="gamePanel" width="550" height="400"></canvas>
+<th:block layout:fragment="AfterBody">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script th:src="@{/js/omok.js}"></script>
+</th:block>
+
+<body class="flex-box" layout:fragment="Content">
+<canvas id="gamePanel" width="500" height="500"></canvas>
 </body>
 </html>
