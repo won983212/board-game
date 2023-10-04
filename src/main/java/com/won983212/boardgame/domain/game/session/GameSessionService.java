@@ -21,15 +21,16 @@ public class GameSessionService {
     private final Map<String, Map<SessionMetadataType, Object>> sessionMetadatas = new ConcurrentHashMap<>();
 
     public void joinPlayer(Long roomId, Player player, WebSocketSession session) {
-        Optional<Room> room = roomService.findById(roomId);
-        if (room.isEmpty()) {
+        Optional<Room> oRoom = roomService.findById(roomId);
+        if (oRoom.isEmpty()) {
             log.warn("{}가 없는 roomId를 전송했습니다: {}", session.getId(), roomId);
             return;
         }
 
+        GameContext context = oRoom.get().getGameType().createContext();
         GameSession gameSession = this.sessions.get(roomId);
         if (gameSession == null) {
-            gameSession = new GameSession();
+            gameSession = new GameSession(context);
             sessions.put(roomId, gameSession);
             sessionMetadatas.put(session.getId(), createInitialMetadata(roomId, player));
         }
